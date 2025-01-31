@@ -20,10 +20,12 @@ app.get('/', (req, res) => {
 })
 app.use('/api', todoRoute)
 
-// ConnectDB();
+if (process.env.NODE_ENV !== 'test') {
+
+ConnectDB();
 const Port = process.env._PORT
 app.listen(Port, () => {
     console.log(`server is running on port ${Port}`)
 })
-
+}
 module.exports = app // export index for tesing..
